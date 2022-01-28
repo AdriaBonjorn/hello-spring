@@ -23,4 +23,9 @@ public class DemoProjectApplication {
 	public String Hola(@RequestParam(value = "BusinessName", defaultValue = "GFT") String name) {
 		return String.format("Welcome to %s!", name);
 	}
+
+	@GetMapping("/add")
+	public String add(@RequestParam(value = "a", defaultValue = "0") int a, @RequestParam(value = "b", defaultValue = "0") int b) {
+		return String.format("%s", a+b);
+	}
 }
