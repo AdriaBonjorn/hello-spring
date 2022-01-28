@@ -44,4 +44,32 @@ class DemoProjectApplicationTests {
 				.getForObject("/add?a=1&b=2", String.class))
 				.isEqualTo("3");
 	}
+
+	@Test
+	void canAddZero(@Autowired TestRestTemplate restTemplate) {
+		assertThat(restTemplate
+				.getForObject("/add?a=0&b=2", String.class))
+				.isEqualTo("2");
+	}
+
+	@Test
+	void canAddNegative(@Autowired TestRestTemplate restTemplate) {
+		assertThat(restTemplate
+				.getForObject("/add?a=1&b=-2", String.class))
+				.isEqualTo("-1");
+	}
+
+	@Test
+	void canAddNulla(@Autowired TestRestTemplate restTemplate) {
+		assertThat(restTemplate
+				.getForObject("/add?a=&b=2", String.class))
+				.isEqualTo("2");
+	}
+
+	@Test
+	void canAddNullb(@Autowired TestRestTemplate restTemplate) {
+		assertThat(restTemplate
+				.getForObject("/add?a=1&b=", String.class))
+				.isEqualTo("1");
+	}
 }
