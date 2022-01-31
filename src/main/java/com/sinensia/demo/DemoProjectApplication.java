@@ -37,5 +37,47 @@ public class DemoProjectApplication {
 		}
 		return sum.intValue();
 	}
+
+	@GetMapping("/substract")
+	public Object sust(
+			@RequestParam(value = "a", defaultValue = "0") Float a,
+			@RequestParam(value = "b", defaultValue = "0") Float b)
+	{
+		Float sums = a-b;
+		Float decimals = sums - sums.intValue();
+
+		if(decimals!=0){
+			return sums;
+		}
+		return sums.intValue();
+	}
+
+	@GetMapping("/multiply")
+	public Object multiply(
+			@RequestParam(value = "a", defaultValue = "0") Float a,
+			@RequestParam(value = "b", defaultValue = "0") Float b)
+	{
+		Float product = a*b;
+		Float decimals = product - product.intValue();
+
+		if(decimals!=0){
+			return product;
+		}
+		return product.intValue();
+	}
+
+	@GetMapping("/divide")
+	public Object divide(
+			@RequestParam(value = "a", defaultValue = "0") Float a,
+			@RequestParam(value = "b", defaultValue = "0") Float b)
+	{
+		Float div = a/b;
+		Float decimals = div - div.intValue();
+
+		if(decimals!=0){
+			return div;
+		}
+		return div.intValue();
+	}
 }
 
