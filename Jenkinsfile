@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
 
-                // Run Gradle Wraper
+                // Run Gradle Wraper baby
                 sh "./gradlew clean test assemble"
             }
             post {
