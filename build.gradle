@@ -4,11 +4,15 @@ plugins {
 	id 'java'
 	id 'jacoco'
 	id 'pmd'
+	d 'info.solidsoft.pitest' version '1.7.0'
+
 }
 
 group = 'com.sinensia'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+
+
 
 repositories {
 	mavenCentral()
@@ -34,4 +38,11 @@ jacocoTestReport{
 pmd {
 	consoleOutput = true
 	ignoreFailures = true
+}
+
+//Pitest requires these versions
+ext['junit-jupiter.version'] = '5.5.2'
+pitest {
+	junit5PluginVersion = '0.12'
+	outputFormats = ['XML', 'HTML']
 }
