@@ -5,7 +5,7 @@ pipeline {
 
         stage('Test'){
             steps {
-                     sh "./gradlew clean test"
+                     sh "./gradlew clean test pitest"
                         }
                         post {
                             // If Gradle was able to run the tests, even if some of the test
@@ -15,7 +15,8 @@ pipeline {
                                 jacoco execPattern: 'build/jacoco/*.exec'
                                 recordIssues(
                                     tools: [
-                                        pmdParser(pattern: 'build/reports/pmd/*.xml')
+                                        pmdParser(pattern: 'build/reports/pmd/*.xml'),
+                                        pit(pattern: "build/reports/pitest/*.xml")
                                     ]
                                 )
                             }
