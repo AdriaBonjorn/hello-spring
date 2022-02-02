@@ -82,5 +82,18 @@ public class DemoProjectApplication {
 		}
 		return div.intValue();
 	}
+
+	@GetMapping("/sqrt")
+	public Object sqrt(@RequestParam(value = "a", defaultValue = "0") Float a) {
+
+		Float sq = (float) Math.sqrt(a);
+		Float decimals = sq - sq.intValue();
+
+		if(decimals!=0){
+			return sq;
+		}
+		return sq.intValue();
+	}
+
 }
 

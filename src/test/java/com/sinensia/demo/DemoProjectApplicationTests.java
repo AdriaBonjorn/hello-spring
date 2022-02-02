@@ -284,4 +284,25 @@ class DemoProjectApplicationTests {
 
 	}
 
+	@Nested
+	class SqrtTests {
+
+		@DisplayName("Square root")
+		@ParameterizedTest(name="{displayName} [{index}] {0} sqrt= {1}")
+		@CsvSource({
+				"1,      1",
+				"4,      2",
+				"100,  10",
+				"144,    12",
+				"36,    6",
+				"'',     0",
+				"9,  3"
+		})
+		void canSqrt(String a,  String expected) {
+			assertThat(restTemplate.getForObject("/sqrt?a="+a, String.class))
+					.isEqualTo(expected);
+		}
+
+	}
+
 }
